@@ -1,23 +1,25 @@
-#  Selenium automatizovaný test – DemoQA
+# Selenium Test – DemoQA Text Box
 
-Tento projekt je ukázkou automatizovaného testu vytvořeného pomocí **Python + Selenium**. Testuje formulář na stránce [https://demoqa.com/text-box](https://demoqa.com/text-box).
+Tento projekt demonstruje **automatizovaný test webového formuláře** pomocí Selenium WebDriver a Pythonu. Test ověřuje funkčnost textových polí na stránce [https://demoqa.com/text-box](https://demoqa.com/text-box) a je navržen tak, aby běžel v tichém („headless“) režimu, vhodném pro CI/CD prostředí.
 
-## ✅ Co test ověřuje
+---
 
-- Vyplnění polí formuláře (jméno, e-mail, adresa)
-- Odeslání formuláře
-- Kontrolu, že se správně zobrazily výsledky
+## Co test kontroluje
 
-## 🛠 Použité technologie
+Test vyplňuje následující pole formuláře:
 
-- Python
-- Selenium WebDriver
-- unittest
-- Chrome (v headless režimu)
+- Full Name
+- Email
+- Current Address
+- Permanent Address
 
-## ▶️ Spuštění testu
+Poté klikne na **Submit** a ověřuje, zda se zadaná data správně zobrazí v části výstupu.
 
-1. Klonuj repozitář:
+---
+
+## 🛠Instalace a spuštění
+
+1. Naklonuj si repozitář:
 ```bash
 git clone https://github.com/Verathiel/selenium-demoqa-testing.git
 cd selenium-demoqa-testing
@@ -33,6 +35,26 @@ bash
 Zkopírovat
 Upravit
 python test_text_box.py
-📌 Autor
-Veronika Flachsová – začínající QA testerka s GitHub portfoliem.
-Test je součástí mého vzdělávacího růstu v oblasti automatizovaného testování.
+Test se spouští v tichém režimu pomocí --headless Chrome.
+
+Struktura projektu
+bash
+Zkopírovat
+Upravit
+selenium-demoqa-testing/
+├── test_text_box.py        # Testovací skript v Pythonu
+├── requirements.txt        # Seznam závislostí
+└── README.md               # Tento popis projektu
+Použité technologie
+Python
+
+Selenium WebDriver
+
+Unittest
+
+ChromeDriver (v headless módu)
+
+Autorka
+Veronika Flachsová
+Junior QA Tester & začínající Python programátorka
+
