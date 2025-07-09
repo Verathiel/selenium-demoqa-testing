@@ -1,53 +1,56 @@
-# Testování Text Box Formuláře pomocí Selenium a Pytest
+# Selenium Test: Text Box Formulář (DemoQA)
 
-Tento projekt automatizovaně testuje formulář na stránce [https://demoqa.com/text-box](https://demoqa.com/text-box) pomocí Pythonu, Selenium WebDriveru a testovacího frameworku Pytest.
+Tento projekt automatizovaně testuje **formulář na stránce [demoqa.com/text-box](https://demoqa.com/text-box)** pomocí **Pythonu**, **Selenium WebDriveru** a **Pytestu**.
 
 ---
 
-## Funkce testu
+## Co test ověřuje
 
 - Otevření stránky s formulářem
-- Vyplnění polí: jméno, e-mail, aktuální adresa, trvalá adresa
+- Vyplnění polí:  
+  `Jméno`, `E-mail`, `Aktuální adresa`, `Trvalá adresa`
 - Odeslání formuláře
-- Ověření, že se na výstupu zobrazí správné zadané hodnoty
+- Ověření, že se zadané hodnoty správně zobrazí na výstupu
 
 ---
 
 ## Požadavky
 
-- Python 3.9+
-- [ChromeDriver](https://sites.google.com/chromium.org/driver/) (verze odpovídající tvému Chrome prohlížeči) v PATH
+- Python **3.9+**
+- ChromeDriver (**verze odpovídající tvému Chrome prohlížeči**) v PATH
 - Virtuální prostředí (doporučeno)
 
 ---
 
-## Nastavení projektu
+##  Nastavení projektu
 
 1. Vytvoř a aktivuj virtuální prostředí:
 
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
+```bash
+python3 -m venv venv
+source venv/bin/activate
 Nainstaluj závislosti:
 
 bash
 Zkopírovat
 Upravit
 pip install -r requirements.txt
-Ujisti se, že máš chromedriver v PATH nebo nastav jeho cestu v testech.
+Ujisti se, že máš chromedriver v PATH
+(nebo uprav pevnou cestu v testu test_text_box.py).
 
 Spuštění testů
-Spustíš jednoduše příkazem:
-
 bash
 Zkopírovat
 Upravit
 python3 -m pytest tests/
 Struktura projektu
-pages/ - stránka s Page Object modelem pro Text Box formulář
-
-tests/ - testovací skripty
-
-requirements.txt - seznam Python závislostí
-
-venv/ - virtuální prostředí (není v repozitáři)
+bash
+Zkopírovat
+Upravit
+.
+├── pages/               # Page Object pro Text Box
+│   └── text_box_page.py
+├── tests/               # Testovací skript
+│   └── test_text_box.py
+├── requirements.txt     # Seznam závislostí
+└── README.md            # Tento popis projektu
