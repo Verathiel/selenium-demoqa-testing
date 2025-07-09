@@ -6,57 +6,59 @@ Tento projekt automatizovaně testuje **formulář na stránce [demoqa.com/text-
 
 ## Co test ověřuje
 
-- Otevření stránky s formulářem
+- Otevření stránky s formulářem  
 - Vyplnění polí:  
-  `Jméno`, `E-mail`, `Aktuální adresa`, `Trvalá adresa`
-- Odeslání formuláře
-- Ověření, že se zadané hodnoty správně zobrazí na výstupu
+  `Jméno`, `E-mail`, `Aktuální adresa`, `Trvalá adresa`  
+- Odeslání formuláře  
+- Ověření, že se zadané hodnoty správně zobrazí na výstupu  
 
 ---
 
 ## Požadavky
 
-- Python **3.9+**
-- ChromeDriver (**verze odpovídající tvému Chrome prohlížeči**) v PATH
-- Virtuální prostředí (doporučeno)
+- Python **3.9+**  
+- ChromeDriver (**verze odpovídající tvému Chrome prohlížeči**) v PATH  
+- Virtuální prostředí (doporučeno)  
 
 ---
 
-##  Nastavení projektu
+## Nastavení projektu
 
 1. Vytvoř a aktivuj virtuální prostředí:
 
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
+
+2. Nainstaluj závislosti:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. Ujisti se, že máš `chromedriver` v PATH  
+   (nebo uprav pevnou cestu v testu `tests/test_text_box.py`).  
+
+---
+
+## Spuštění testů
+
 ```bash
-python3 -m venv venv
-source venv/bin/activate
-Nainstaluj závislosti:
-
-bash
-Zkopírovat
-Upravit
-pip install -r requirements.txt
-Ujisti se, že máš chromedriver v PATH
-(nebo uprav pevnou cestu v testu test_text_box.py).
-
-Spuštění testů
-bash
-Zkopírovat
-Upravit
 python3 -m pytest tests/
 Struktura projektu
 bash
 Zkopírovat
 Upravit
 .
-├── pages/               # Page Object pro Text Box
+├── pages/               # Page Object model pro Text Box
 │   └── text_box_page.py
-├── tests/               # Testovací skript
+├── tests/               # Testovací skripty
 │   └── test_text_box.py
-├── requirements.txt     # Seznam závislostí
+├── requirements.txt     # Seznam Python závislostí
 └── README.md            # Tento popis projektu
-
 Automatické testování (CI/CD)
-Tento projekt využívá GitHub Actions pro automatické spouštění testů při každém pushi nebo pull requestu do větve main.
+Projekt využívá GitHub Actions pro automatické spouštění testů při každém pushi nebo pull requestu do větve main:
 
 Používá se Python 3.9
 
@@ -67,5 +69,4 @@ Testy se spouštějí pomocí pytest
 Výsledky testů jsou viditelné přímo v záložce Actions na GitHubu
 
 Díky tomu je zajištěno, že každý nový kód prochází automatickou kontrolou funkčnosti a projekt zůstává stabilní.
-
 
