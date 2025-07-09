@@ -1,60 +1,53 @@
-# Selenium Test – DemoQA Text Box
+# Testování Text Box Formuláře pomocí Selenium a Pytest
 
-Tento projekt demonstruje **automatizovaný test webového formuláře** pomocí Selenium WebDriver a Pythonu. Test ověřuje funkčnost textových polí na stránce [https://demoqa.com/text-box](https://demoqa.com/text-box) a je navržen tak, aby běžel v tichém („headless“) režimu, vhodném pro CI/CD prostředí.
-
----
-
-## Co test kontroluje
-
-Test vyplňuje následující pole formuláře:
-
-- Full Name
-- Email
-- Current Address
-- Permanent Address
-
-Poté klikne na **Submit** a ověřuje, zda se zadaná data správně zobrazí v části výstupu.
+Tento projekt automatizovaně testuje formulář na stránce [https://demoqa.com/text-box](https://demoqa.com/text-box) pomocí Pythonu, Selenium WebDriveru a testovacího frameworku Pytest.
 
 ---
 
-## 🛠Instalace a spuštění
+## Funkce testu
 
-1. Naklonuj si repozitář:
-```bash
-git clone https://github.com/Verathiel/selenium-demoqa-testing.git
-cd selenium-demoqa-testing
-Nainstaluj požadované balíčky:
+- Otevření stránky s formulářem
+- Vyplnění polí: jméno, e-mail, aktuální adresa, trvalá adresa
+- Odeslání formuláře
+- Ověření, že se na výstupu zobrazí správné zadané hodnoty
+
+---
+
+## Požadavky
+
+- Python 3.9+
+- [ChromeDriver](https://sites.google.com/chromium.org/driver/) (verze odpovídající tvému Chrome prohlížeči) v PATH
+- Virtuální prostředí (doporučeno)
+
+---
+
+## Nastavení projektu
+
+1. Vytvoř a aktivuj virtuální prostředí:
+
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+Nainstaluj závislosti:
 
 bash
 Zkopírovat
 Upravit
 pip install -r requirements.txt
-Spusť test:
+Ujisti se, že máš chromedriver v PATH nebo nastav jeho cestu v testech.
+
+Spuštění testů
+Spustíš jednoduše příkazem:
 
 bash
 Zkopírovat
 Upravit
-python test_text_box.py
-Test se spouští v tichém režimu pomocí --headless Chrome.
-
+python3 -m pytest tests/
 Struktura projektu
-bash
-Zkopírovat
-Upravit
-selenium-demoqa-testing/
-├── test_text_box.py        # Testovací skript v Pythonu
-├── requirements.txt        # Seznam závislostí
-└── README.md               # Tento popis projektu
-Použité technologie
-Python
+pages/ - stránka s Page Object modelem pro Text Box formulář
 
-Selenium WebDriver
+tests/ - testovací skripty
 
-Unittest
+requirements.txt - seznam Python závislostí
 
-ChromeDriver (v headless módu)
-
-Autorka
-Veronika Flachsová
-Junior QA Tester & začínající Python programátorka
-
+venv/ - virtuální prostředí (není v repozitáři)

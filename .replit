@@ -1,0 +1,6 @@
+run = "PYTHONPATH=. python3 -m pytest tests/test_text_box.py"
+language = "python"
+modules = ["python-3.11"]
+
+[nix]
+packages = ["geckodriver"]
