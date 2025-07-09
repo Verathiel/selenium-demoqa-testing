@@ -1,34 +1,24 @@
+import pytest
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
-import time
-import unittest
+from pages.text_box_page import TextBoxPage
 
-class TextBoxTest(unittest.TestCase):
-    def setUp(self):
-        chrome_options = Options()
-# chrome_options.add_argument("--headless")  ← zakomentuj nebo smaž
-self.driver = webdriver.Chrome(options=chrome_options)
-        self.driver.get("https://demoqa.com/text-box")
-        self.driver.implicitly_wait(10)
+@pytest.fixture
+def driver():
+    options = Options()
+    options.add_argument("--headless")  # běh bez okna prohlížeče
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    driver = webdriver.Chrome(options=options)
+    driver.implicitly_wait(10)
+    yield driver
+    driver.quit()
 
-    def test_fill_text_box(self):
-        driver = self.driver
+def test_fill_text_box(driver):
+    page = TextBoxPage(driver)
+    page.open()
+    page.fill_form("Veronika Tester", "veronika@example.com", "Testovací 123", "Testland")
+    page.submit()
 
-        driver.find_element(By.ID, "userName").send_keys("Veronika Tester")
-        driver.find_element(By.ID, "userEmail").send_keys("veronika@example.com")
-        driver.find_element(By.ID, "currentAddress").send_keys("Testovací 123")
-        driver.find_element(By.ID, "permanentAddress").send_keys("Testland")
-        driver.find_element(By.ID, "submit").click()
-
-        output_name = driver.find_element(By.ID, "name").text
-        output_email = driver.find_element(By.ID, "email").text
-
-        self.assertIn("Veronika Tester", output_name)
-        self.assertIn("veronika@example.com", output_email)
-
-    def tearDown(self):
-        self.driver.quit()
-
-if __name__ == "__main__":
-    unittest.main()
+    assert "Veronika Tester" in page.get_output_name()
+    assert "veronika@example.com" in page.get_output_email()
