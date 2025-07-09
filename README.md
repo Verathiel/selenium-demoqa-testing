@@ -54,3 +54,18 @@ Upravit
 │   └── test_text_box.py
 ├── requirements.txt     # Seznam závislostí
 └── README.md            # Tento popis projektu
+
+Automatické testování (CI/CD)
+Tento projekt využívá GitHub Actions pro automatické spouštění testů při každém pushi nebo pull requestu do větve main.
+
+Používá se Python 3.9
+
+Instalují se závislosti ze souboru requirements.txt
+
+Testy se spouštějí pomocí pytest
+
+Výsledky testů jsou viditelné přímo v záložce Actions na GitHubu
+
+Díky tomu je zajištěno, že každý nový kód prochází automatickou kontrolou funkčnosti a projekt zůstává stabilní.
+
+
