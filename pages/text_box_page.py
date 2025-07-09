@@ -1,6 +1,3 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 
 
@@ -28,34 +25,13 @@ class TextBoxPage:
             *self.permanent_address_textarea).send_keys(permanent_address)
 
     def submit(self):
-        self.driver.find_element(*self.submit_button).click()
+        submit_btn = self.driver.find_element(*self.submit_button)
+        self.driver.execute_script("arguments[0].scrollIntoView(true);",
+                                   submit_btn)
+        submit_btn.click()
 
     def get_output_name(self):
         return self.driver.find_element(*self.output_name).text
 
     def get_output_email(self):
         return self.driver.find_element(*self.output_email).text
-
-
-# --- Kód pro spuštění testu / demo ---
-if __name__ == "__main__":
-    chrome_driver_path = "/nix/store/3w27rhw8rwxhf915b7gqlflf02cnqbjv-chromedriver-92.0.4515.107/bin/chromedriver"
-    service = Service(executable_path=chrome_driver_path)
-
-    options = Options()
-    # options.add_argument("--headless")  # Tohle vynecháme, chceme vidět okno
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-
-    driver = webdriver.Chrome(service=service, options=options)
-
-    page = TextBoxPage(driver)
-    page.open()
-    page.fill_form("Veronika", "veronika@example.com", "Moje adresa 123",
-                   "Jiná adresa 456")
-    page.submit()
-
-    print("Výstup jméno:", page.get_output_name())
-    print("Výstup email:", page.get_output_email())
-
-    driver.quit()
