@@ -7,8 +7,8 @@ import unittest
 class TextBoxTest(unittest.TestCase):
     def setUp(self):
         chrome_options = Options()
-        chrome_options.add_argument("--headless")  # pro tichý režim
-        self.driver = webdriver.Chrome(options=chrome_options)
+# chrome_options.add_argument("--headless")  ← zakomentuj nebo smaž
+self.driver = webdriver.Chrome(options=chrome_options)
         self.driver.get("https://demoqa.com/text-box")
         self.driver.implicitly_wait(10)
 
